@@ -40,4 +40,19 @@ e.g.
 Misc
 ==============
 
-\n adds a newline except when you use %r
+\n #adds a newline except when you use %r
+\t #tab in
+
+print(""" bunch of text
+here and 
+here
+""")  #to print multiple lines
+
+\some_character_here #escape sequences: how to put difficult-to-type characters into a string
+e.g.
+\\ #one backslash
+\" #quote
+\' #single quote
+
+
+
