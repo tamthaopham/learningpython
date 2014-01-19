@@ -4,6 +4,20 @@ installed: Distribute (Setuptools), Requests, Pip, Requests-Oauthlib, Twython
 
 
 
+Python2 vs. Python3
+==============
+python3 #start python3
+
+print() vs. print #need parentheses
+
+print("string and ", end=" ")
+print("string")  #to have two have two long strings print on same line; bad form to have 80+ characters on line
+
+input() vs. raw_input() #also input is different from Python2 to Python3
+
+integer division, e.g. 2/3, is now real division
+
+
 Basic
 ==============
 comment with hashtags
@@ -14,6 +28,8 @@ help(filename) will display the documentation comments for each function in the 
 help(filename.function_name) will display the documentation comment for the function
 
 python3 setup.py install #install .py file with python3
+
+pip install <packagename>
 
 ctrl-C #break
 
@@ -50,6 +66,8 @@ e.g. mdl_nm.randint(0,10)
 Variables & Types
 ==============
 
+variable types don't need to be declared; Python figures out types on its own
+
 mutable objects can be changed after they're created (e.g. lists)
 
 immutable objects cannot be changed (e.g. strings, tuples, integers, etc)
@@ -59,7 +77,37 @@ immutable objects cannot be changed (e.g. strings, tuples, integers, etc)
 
 global globvar    # declaration of intent to change global variable inside a function; considered dangerous
 
-Data Types:  True, False, None, Strings, Numbers, Floats, Lists
+Data Types:  True, False, None, Strings, Integer (default for numbers), Floats (Decimal), Lists
+
+
+
+
+
+Text
+==============
+
+double quotes and single quotes can be used almost interchangeably
+
+lone unmatched double quotes or single quotes can be used inside the text between a matched pair
+
+""" should be used when there is both a double and single quote inside the text
+
+print(""" bunch of text
+here and 
+here
+""")  #to print multiple lines; can also use ''' if there are double-quotes being used elsewhere on the line
+
+words = sentence.split(" ")  #split some variable string called sentence into a list by the " " delimiter
+                             Does not affect the string variable
+
+sorted(words)  #sorts a list; if alphabetical, capitalized letters come first
+
+print(text_to_be_printed)   
+
+\ is used to prematurely end a line of code and pick up on the next, e.g. 
+if a == True and \
+   b == False
+
 
 
 Logical Operands
@@ -132,35 +180,6 @@ __   #leading double-underscore is intended to name-mangle so the system won't u
 __a__ #leading and trailing double-underscore is intended for builtin methods or variables
 
 
-
-
-Python2 vs. Python3
-==============
-python3 #start python3
-
-print() vs. print #need parentheses
-
-print("string and ", end=" ")
-print("string")  #to have two have two long strings print on same line; bad form to have 80+ characters on line
-
-input() vs. raw_input() #also input is different from Python2 to Python3
-
-integer division, e.g. 2/3, is now real division
-
-
-
-Text
-==============
-
-words = sentence.split(" ")  #split some variable string called sentence into a list by the " " delimiter
-                             Does not affect the string variable
-
-sorted(words)  #sorts a list; if alphabetical, capitalized letters come first
-
-print(""" bunch of text
-here and 
-here
-""")  #to print multiple lines; can also use ''' if there are double-quotes being used elsewhere on the line
 
 
 Formatters
