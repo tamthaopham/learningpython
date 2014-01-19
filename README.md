@@ -107,7 +107,11 @@ e.g.
 Collections
 ==============
 
-range(0,5)  #begins at 0 and slicing off BEFORE 5, i.e. 0, 1, 2, 3, 4
+Collections in python use cardinal numbers (starts with zero, e.g. like cards in a deck that can be drawn at random) rather than ordinal numbers (starting with 1, e.g. ordered as in a race)
+
+range(0,5)  # begins at 0 and slicing off BEFORE 5, i.e. 0, 1, 2, 3, 4
+
+range(0,6,2)  # begins at 0, incrementing by 2, and slicing off BEFORE 6, i.e. 0, 2, 4
 
 len(range(0,x) = x  # length of range from 0 is the same as maximum
 
@@ -120,11 +124,17 @@ range(a,b) + range(b,c) = range(a,c)  # you can add two ranges and come up with 
 n % m in range m   # remainder of n div m is a positive integer less than m (i.e. in range(0,m))
 
 list_name = ['something', 5, a]    # create a list
-list_name = range(0,6)
-list_name.extend(range(0,6))
+list_name = range(0,6)             # create a list from a range, i.e. 0, 1, 2, 3, 4, 5
+list_name.extend(range(0,6))       # takes a list argument
+list_name()                        # initialize list
+list_name.append(single_item)      # takes a single argument
+item = list[index_num]             # reference a single item in list
+
 # lists are mutable and can be changed in place 
 
-list methods: list(), list(iterable), add, contains, delitem, delslice, eq, ge, getattribute, getitem, getslice, gt, iadd, append, extend, + , * , insert, index, count, remove, reverse, sort, in
+other list methods: list(iterable), add, contains, delitem, delslice, eq, ge, getattribute, getitem, getslice, gt, iadd, + , * , insert, index, count, remove, reverse, sort, in
+
+list2x2 = [[1,2,3],[4,5,6]]   # example of 2-dimensional list, i.e. list of lists
 
 for item in collection:    # repeat loop for each item in collection
 
@@ -134,10 +144,24 @@ for item in collection:    # repeat loop for each item in collection
 Flow Control
 ==============
 
-if <expression>:
-elif <expression>:
+if <expression>:        # for good style, every if should have an else that's either comprehensive or die
+elif <expression>:      # avoid nested if statements, max. 2 deep
 else:
 
+for item in collection:  # repeat loop for each item in collection
+                         # can use a variable that has not been initialized since it defines the variable
+                         # preferred over while loops
+
+from sys import exit     # import exit command
+exit(0)                  # exit program; index indicates the type of error, 0 = good exit
+break                    # break out of loop
+
+while <expression>:   # repeat loop while expression holds true; can result in infinite loops
+while True:           # loops forever
+                      # generally avoid using while unless you want it to loop forever, which means rarely
+
+try:                  # exception handling; try block continues until exception, then moves to except block
+except ErrorType      # error types are specific, e.g. ValueError, and only caught here if they match
 
 
 Files
