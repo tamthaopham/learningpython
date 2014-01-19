@@ -59,6 +59,8 @@ Less Intuitive Logic
       - False and anything returns False
       - True or anything returns the first operand
 
+x in list_name    # test to see if item in list
+substring in string_name   # test to see if substring in string
 
 
 
@@ -99,6 +101,42 @@ e.g.
 '2011-05-14'
 >> repr(d)
 'datetime.date(2011, 5, 14)'
+
+
+
+Collections
+==============
+
+range(0,5)  #begins at 0 and slicing off BEFORE 5, i.e. 0, 1, 2, 3, 4
+
+len(range(0,x) = x  # length of range from 0 is the same as maximum
+
+len(range(a,b) = b - a  # length of range is the same as distance between range, i.e. not off by one
+
+range(a,a) = []   # there is no distance between a number and itself
+
+range(a,b) + range(b,c) = range(a,c)  # you can add two ranges and come up with an intuitive result:  note that range(a,b) does not include b and range(b,c) does
+
+n % m in range m   # remainder of n div m is a positive integer less than m (i.e. in range(0,m))
+
+list_name = ['something', 5, a]    # create a list
+list_name = range(0,6)
+list_name.extend(range(0,6))
+# lists are mutable and can be changed in place 
+
+list methods: list(), list(iterable), add, contains, delitem, delslice, eq, ge, getattribute, getitem, getslice, gt, iadd, append, extend, + , * , insert, index, count, remove, reverse, sort, in
+
+for item in collection:    # repeat loop for each item in collection
+
+
+
+
+Flow Control
+==============
+
+if <expression>:
+elif <expression>:
+else:
 
 
 
