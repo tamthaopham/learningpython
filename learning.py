@@ -1,6 +1,3 @@
-learningpython
-==============
-
 # Twitter API
 
 from twython import Twython
