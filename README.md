@@ -6,6 +6,13 @@ installed: Distribute (Setuptools), Requests, Pip, Requests-Oauthlib, Twython
 
 Basic
 ==============
+comment with hashtags
+
+documentation comments come after on the line below function header between """ and """
+
+help(filename) will display the documentation comments for each function in the file
+help(filename.function_name) will display the documentation comment for the function
+
 python3 setup.py install #install .py file with python3
 
 ctrl-C #break
@@ -28,6 +35,31 @@ cat filename at command line #easy way to print file to screen
 
 python is case-sensitive
 
+python is generally a reference language, i.e. foo = Foo() means that foo is Foo()'s name and if x is also used to refer to Foo(), then if it changes, what both foo and x refers to will change
+
+everything in python is an object
+
+import module_name  # imports module but you still have to refer to the module_name when calling its functions, e.g. module_name.function_name()
+
+from module_name import *    # imports all functions and you no longer have to refer to module_name when calling its functions, e.g. function_name()
+
+
+
+Logical Operands
+==============
+
+Truth Terms:  and, or, not, !=, ==, >=, <=, True, False
+
+Less Intuitive Logic
+  False or True = True
+  False or False = False
+  True and False = False
+  False and False = False
+  # note that the expression returned is actually one of the operands, the last operand required to conclude the result
+      - False and anything returns False
+      - True or anything returns the first operand
+
+
 
 
 Python2 vs. Python3
@@ -42,6 +74,16 @@ print("string")  #to have two have two long strings print on same line; bad form
 input() vs. raw_input() #also input is different from Python2 to Python3
 
 integer division, e.g. 2/3, is now real division
+
+
+
+Text
+==============
+
+words = sentence.split(" ")  #split some variable string called sentence into a list by the " " delimiter
+                             Does not affect the string variable
+
+sorted(words)  #sorts a list; if alphabetical, capitalized letters come first
 
 
 Formatters
@@ -125,5 +167,16 @@ e.g.
 \n #adds a newline except when you use %r
 \t #tab in
 
-+=   #combines plus and equals, i.e. x = x + y is the same as x += y
++=   #combines plus and equals, i.e. x = x + y is same as x += y, almost like an append; a.k.a increments by operator
+
+lambda is used for very short functions that you don't want to name, e.g. applier(lambda z: z * 4, 7)
+
+mutable objects can be changed after they're created (e.g. lists)
+
+immutable objects cannot be changed (e.g. strings, tuples, integers, etc)
+  - when you change a string, you are actually binding the variable to a different newly created object
+  - why string concatenation is slow and expensive, it requires making many copies, while appending to a list is cheap
+  - it's the bindings that are immutable, not the objects (so if you can change the underlying object, then you can also change what the variable refers to, e.g. tuples)
+
+word = words.pop(0)  # pops off a list the item at the index
 
