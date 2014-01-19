@@ -43,12 +43,29 @@ import module_name  # imports module but you still have to refer to the module_n
 
 from module_name import *    # imports all functions and you no longer have to refer to module_name when calling its functions, e.g. function_name()
 
+import module_name as mdl_nm    # use as to give modules an alias when importing
+e.g. mdl_nm.randint(0,10)
+
+
+Variables & Types
+==============
+
+mutable objects can be changed after they're created (e.g. lists)
+
+immutable objects cannot be changed (e.g. strings, tuples, integers, etc)
+  - when you change a string, you are actually binding the variable to a different newly created object
+  - why string concatenation is slow and expensive, it requires making many copies, while appending to a list is cheap
+  - it's the bindings that are immutable, not the objects (so if you can change the underlying object, then you can also change what the variable refers to, e.g. tuples)
+
+global globvar    # declaration of intent to change global variable inside a function; considered dangerous
+
+Data Types:  True, False, None, Strings, Numbers, Floats, Lists
 
 
 Logical Operands
 ==============
 
-Truth Terms:  and, or, not, !=, ==, >=, <=, True, False
+Truth Terms:  and, or, not, != or <>, ==, >, >=, <, <=, True, False
 
 Less Intuitive Logic
   False or True = True
@@ -61,6 +78,59 @@ Less Intuitive Logic
 
 x in list_name    # test to see if item in list
 substring in string_name   # test to see if substring in string
+
+is      # a is b tests to see whether both are bound to the same object; different than equal, because a could == b and not a is b
+
+
+Other Operators
+==============
+
+Standard: + , - , * , / 
+
+=   #assignment
+
+%    #mod (remainder)
+
+**  #exponent
+
+//  #floor (round-down) division
+
++=   #combines plus and equals, i.e. x = x + y is same as x += y, almost like an append; a.k.a increments by operator
+
+-=   #subtracts and assigns, a -= b is the same as a = a - b
+
+*=   #multiplies and assigns, a *= b is the same as a = a * b
+
+/=   #divides and assigns, a /= b is the same as a = a / b
+
+%=   #mod and assigns, a %= b is the same as a = a mod b
+
+**=  #exponent  and assigns, a **= b is the same as a = a ** b
+
+//=  #floor division and assigns, a //= b is the same as a = a // b
+
+[ ]  #used for array items 
+
+( )  #used for function operators
+
+:    #end of header line for blocks
+
+.    #used to connect object to function when calling
+
+,    #used to separte items, e.g. print(a, b)
+
+;    #only used for multiple statements on the same line
+
+@    #class, function and method decorators, e.g. @property
+
+{ }  #used to define a dictionary
+
+_    #leading underscore on a name in a class is intended to indicate that the class is private (convention)
+
+__   #leading double-underscore is intended to name-mangle so the system won't use names that conflict
+
+__a__ #leading and trailing double-underscore is intended for builtin methods or variables
+
 
 
 
@@ -87,6 +157,11 @@ words = sentence.split(" ")  #split some variable string called sentence into a 
 
 sorted(words)  #sorts a list; if alphabetical, capitalized letters come first
 
+print(""" bunch of text
+here and 
+here
+""")  #to print multiple lines; can also use ''' if there are double-quotes being used elsewhere on the line
+
 
 Formatters
 ==============
@@ -94,6 +169,22 @@ Formatters
 %s converts objects to string using str() #string
 %r converts objects to string using repr() #raw string, returns result in Python syntax which can recreate object
 %d formats a number for display #display
+
+%i signed integer decimal
+%o unsigned octal
+%u unsigned decimal
+%x unsigned hexidecimal (lowercase)
+%X unsigned heixidecimal (uppercase)
+%e floating point exponential (lowercase)
+%E floating point exponential (uppercase)
+%f floating point decimal
+%F floating point decimal 
+%g flaoting point format
+%G floating point format
+%c single character, integer or char
+%% no argument converted, results in %
+
+
 
 e.g.
 >> d = datetime.date.today()
@@ -106,6 +197,8 @@ e.g.
 
 Collections
 ==============
+
+An iterable is something you can iterate through and read, i.e. you can use for, while, in:  strings, lists, files
 
 Collections in python use cardinal numbers (starts with zero, e.g. like cards in a deck that can be drawn at random) rather than ordinal numbers (starting with 1, e.g. ordered as in a race)
 
@@ -129,6 +222,9 @@ list_name.extend(range(0,6))       # takes a list argument
 list_name()                        # initialize list
 list_name.append(single_item)      # takes a single argument
 item = list[index_num]             # reference a single item in list
+del list_name[index]               # remove item from list by index
+del list_name[a:b]                 # remove part of list by range
+word = words.pop(0)                # pops off a list the item at the index
 
 # lists are mutable and can be changed in place 
 
@@ -155,6 +251,8 @@ for item in collection:  # repeat loop for each item in collection
 from sys import exit     # import exit command
 exit(0)                  # exit program; index indicates the type of error, 0 = good exit
 break                    # break out of loop
+continue                 # move to next loop
+assert(bool_exp)         # tests if expression is true, otherwise program ends
 
 while <expression>:   # repeat loop while expression holds true; can result in infinite loops
 while True:           # loops forever
@@ -162,6 +260,16 @@ while True:           # loops forever
 
 try:                  # exception handling; try block continues until exception, then moves to except block
 except ErrorType      # error types are specific, e.g. ValueError, and only caught here if they match
+except IOError as e   # example of an alias for exception handling, e.g. print("I/O error({0}): {1}".format(e.errno, e.strerror))
+
+raise                 # raise either a non-syntactical programmer error, e.g. raise error ("Ouch!", or re-raise current error to be handled up the stack, e.g. raise or raise ErrorType() inside an except block
+
+finally:              # used to make sure the block is executed no matter what, even if exceptions are caught in an earlier block, e.g. filename.close()
+
+pass                  # null operation, used as a stand-in, e.g. def f(arg): pass #does nothing (yet)
+
+
+
 
 
 Files
@@ -209,16 +317,23 @@ function names can only have letters, numbers and underscores - and can't start 
 you can pass functions constants, variables, and calculations
 
 return some_value_here   #function will return this value
+yield some_generator_here #function will return a generator, e.g. i*i
+
+exec expression   # allows for dynamic execution of expression
+
+lambda is used for very short functions that you don't want to name, e.g. applier(lambda z: z * 4, 7)
 
 
 
-Misc
+Classes
 ==============
 
-print(""" bunch of text
-here and 
-here
-""")  #to print multiple lines; can also use ''' if there are double-quotes being used elsewhere on the line
+class class_name:   # class definition
+
+
+
+Escape Sequences
+==============
 
 \some_character_here #escape sequences: how to put difficult-to-type characters into a string, need to be in quotes
 e.g.
@@ -228,17 +343,17 @@ e.g.
 \r #carriage return
 \n #adds a newline except when you use %r
 \t #tab in
+\a #bell
+\b #backfeed
+\f #formfeed
+\v #vertical tab
 
-+=   #combines plus and equals, i.e. x = x + y is same as x += y, almost like an append; a.k.a increments by operator
 
-lambda is used for very short functions that you don't want to name, e.g. applier(lambda z: z * 4, 7)
 
-mutable objects can be changed after they're created (e.g. lists)
 
-immutable objects cannot be changed (e.g. strings, tuples, integers, etc)
-  - when you change a string, you are actually binding the variable to a different newly created object
-  - why string concatenation is slow and expensive, it requires making many copies, while appending to a list is cheap
-  - it's the bindings that are immutable, not the objects (so if you can change the underlying object, then you can also change what the variable refers to, e.g. tuples)
 
-word = words.pop(0)  # pops off a list the item at the index
+
+
+
+
 
