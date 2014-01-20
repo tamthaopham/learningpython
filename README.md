@@ -72,8 +72,9 @@ instead of importing, you INSTANTIATE a class, to get what is called an object, 
   print(thing.tangerine)
   
 you can automatically INITIALIZE an object of a class, e.g. 
-  def __init__(self):
+  def __init__(self, lyrics):         # object is passed the class object argument (when called) as well as itself
       self.tangerine = "And now a thousand years in-between"  # self is the empty object made by Python
+      self.lyrics = lyrics
 
 functions in classes need to be passed self
 
