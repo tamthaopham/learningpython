@@ -17,6 +17,8 @@ input() vs. raw_input() #also input is different from Python2 to Python3
 
 integer division, e.g. 2/3, is now real division
 
+complex expressions in flow control statements (e.g. while) have to be in parentheses
+
 
 Basic
 ==============
@@ -55,12 +57,29 @@ python is generally a reference language, i.e. foo = Foo() means that foo is Foo
 
 everything in python is an object
 
-import module_name  # imports module but you still have to refer to the module_name when calling its functions, e.g. module_name.function_name()
+import module_name  # imports module (in the same directory, no .py extension) but you still have to refer to the module_name when calling its functions, e.g. module_name.function_name()
 
 from module_name import *    # imports all functions and you no longer have to refer to module_name when calling its functions, e.g. function_name()
 
 import module_name as mdl_nm    # use as to give modules an alias when importing
 e.g. mdl_nm.randint(0,10)
+
+classes don't interfere with each other, while with modules, when you import there is generally only one for the entire program
+
+instead of importing, you INSTANTIATE a class, to get what is called an object, e.g.
+  thing = MyStuff()    # where MyStuff is a class
+  thing.apple()
+  print(thing.tangerine)
+  
+you can automatically INITIALIZE an object of a class, e.g. 
+  def __init__(self):
+      self.tangerine = "And now a thousand years in-between"  # self is the empty object made by Python
+
+functions in classes need to be passed self
+
+dir()    # used to find out which names (relevant attributes) a module defines (but not built-in functions & variables, returns a sorted list of strings
+
+
 
 
 Variables & Types
@@ -79,6 +98,7 @@ global globvar    # declaration of intent to change global variable inside a fun
 
 Data Types:  True, False, None, Strings, Integer (default for numbers), Floats (Decimal), Lists
 
+string_name.join(collection_name) # join is a method of string that allows the string_name to serve as a "joiner" of the items in the collection
 
 
 
@@ -253,7 +273,12 @@ list2x2 = [[1,2,3],[4,5,6]]   # example of 2-dimensional list, i.e. list of list
 
 for item in collection:    # repeat loop for each item in collection
 
-
+dictionaries (a.k.a. hashes)
+  e.g. stuff = {'name':'Zed','age':36}
+  therefore, stuff['name'] == 'Zed'
+  assign by, stuff[1] = "Wow"    # assigns "Wow" to the key that 1 as value  (not ordered)
+  delete, del stuff['city]
+  return value, dict_name.get(key, default_value_to_be_returned_if_key_does_not_exist=None)
 
 
 Flow Control
@@ -273,7 +298,8 @@ break                    # break out of loop
 continue                 # move to next loop
 assert(bool_exp)         # tests if expression is true, otherwise program ends
 
-while <expression>:   # repeat loop while expression holds true; can result in infinite loops
+while (<expression>): # repeat loop while expression holds true; can result in infinite loops
+                      # often needs parentheses if expression is complex
 while True:           # loops forever
                       # generally avoid using while unless you want it to loop forever, which means rarely
 
