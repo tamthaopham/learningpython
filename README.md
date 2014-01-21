@@ -23,6 +23,8 @@ urllib module, import urllib.request vs. urllib to use urlopen; call by urlopen(
 
 list(dict_keys()) vs. dict_keys() for indexing, i.e. to use keys as list
 
+super().__init__() vs. super(ChildB, self).__init__() # inside init function, allows you to run the init method of a parent class reliably, mostly useful for multiple inheritances
+
 
 Basic
 ==============
@@ -81,6 +83,7 @@ you can automatically INITIALIZE an object of a class, e.g.
   def __init__(self, lyrics):         # object is passed the class object parameters (when called) as well as itself
       self.tangerine = "And now a thousand years in-between"  # self is the empty object made by Python
       self.lyrics = lyrics
+      self.pet = None     # initialize attribute without assignment, None is a python term
 
 functions in classes are passed self as object
 
