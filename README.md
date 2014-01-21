@@ -67,16 +67,18 @@ e.g. mdl_nm.randint(0,10)
 classes don't interfere with each other, while with modules, when you import there is generally only one for the entire program
 
 instead of importing, you INSTANTIATE a class, to get what is called an object, e.g.
-  thing = MyStuff()    # where MyStuff is a class
-  thing.apple()
-  print(thing.tangerine)
-  
+  thing = MyStuff()    # equivalent to set thing to an instance of MyStuff 
+  thing.apple(J)        # from the class MyStuff, get the function apple that takes parameters self and J
+  thing.tangerine = K   # take attribute tangerine from thing and assign to K
+
+class X(Y)  # equivalent to 'make a class X that is-a Y' 
+
 you can automatically INITIALIZE an object of a class, e.g. 
-  def __init__(self, lyrics):         # object is passed the class object argument (when called) as well as itself
+  def __init__(self, lyrics):         # object is passed the class object parameters (when called) as well as itself
       self.tangerine = "And now a thousand years in-between"  # self is the empty object made by Python
       self.lyrics = lyrics
 
-functions in classes need to be passed self
+functions in classes are passed self as object
 
 dir()    # used to find out which names (relevant attributes) a module defines (but not built-in functions & variables, returns a sorted list of strings
 
