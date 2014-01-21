@@ -19,6 +19,10 @@ integer division, e.g. 2/3, is now real division
 
 complex expressions in flow control statements (e.g. while) have to be in parentheses
 
+urllib module, import urllib.request vs. urllib to use urlopen; call by urlopen(URL).readlines()
+
+list(dict_keys()) vs. dict_keys() for indexing, i.e. to use keys as list
+
 
 Basic
 ==============
